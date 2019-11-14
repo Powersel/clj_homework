@@ -16,12 +16,17 @@
 (defn table-keys [tbl]
   (mapv keyword (first tbl)))
 
+(def first-collection (table-keys student-tbl))
+(def second-collection (second student-tbl))
+
 ;; (key-value-pairs [:id :surname :year :group_id] ["1" "Ivanov" "1996"])
-;; => (:id "1" :surname "Ivanov" :year "1996")
+;; => (:id "1" :surname "Ivanov" :year "1998")
 ;;
 ;; Hint: flatten, map, list
 (defn key-value-pairs [tbl-keys tbl-record]
-  :ImplementMe!)
+  (map list* tbl-keys tbl-record))
+
+(key-value-pairs first-collection second-collection)
 
 ;; (data-record [:id :surname :year :group_id] ["1" "Ivanov" "1996"])
 ;; => {:surname "Ivanov", :year "1996", :id "1"}

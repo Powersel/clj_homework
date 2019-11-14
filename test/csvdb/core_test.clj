@@ -9,8 +9,8 @@
 
 (deftest key-value-pairs-test
   (testing
-    (is (= (vec (key-value-pairs [:id :surname :year :group_id] ["1" "Ivanov" "1996"]))
-           (vec '(:id "1" :surname "Ivanov" :year "1996"))))))
+    (is (= (vec (key-value-pairs [:id :surname :year :group_id] ["1" "Ivanov" "1998"]))
+           (vec '(:id "1" :surname "Ivanov" :year "1998"))))))
 
 (deftest data-record-test
   (testing
