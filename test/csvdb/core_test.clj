@@ -14,8 +14,8 @@
 
 (deftest data-record-test
   (testing
-      (is (= (data-record [:id :surname :year :group_id] ["1" "Ivanov" "1996"])
-             {:surname "Ivanov", :year "1996", :id "1"}))))
+      (is (= (data-record [:id :surname :year :group_id] ["1" "Ivanov" "1998"])
+             {:surname "Ivanov", :year "1998", :id "1"}))))
 
 (deftest data-table-test
   (testing

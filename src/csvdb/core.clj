@@ -16,24 +16,22 @@
 (defn table-keys [tbl]
   (mapv keyword (first tbl)))
 
-(def first-collection (table-keys student-tbl))
-(def second-collection (second student-tbl))
+(def keys-collection (table-keys student-tbl))
+(def first-row-collection (second student-tbl))
 
-;; (key-value-pairs [:id :surname :year :group_id] ["1" "Ivanov" "1996"])
+;; (key-value-pairs [:id :surname :year :group_id] ["1" "Ivanov" "1998"])
 ;; => (:id "1" :surname "Ivanov" :year "1998")
 ;;
 ;; Hint: flatten, map, list
 (defn key-value-pairs [tbl-keys tbl-record]
-  (map list* tbl-keys tbl-record))
+  (zipmap tbl-keys tbl-record))
 
-(key-value-pairs first-collection second-collection)
-
-;; (data-record [:id :surname :year :group_id] ["1" "Ivanov" "1996"])
-;; => {:surname "Ivanov", :year "1996", :id "1"}
+;; (data-record [:id :surname :year :group_id] ["1" "Ivanov" "1998"])
+;; => {:surname "Ivanov", :year "1998", :id "1"}
 ;;
 ;; Hint: apply, hash-map, key-value-pairs
 (defn data-record [tbl-keys tbl-record]
-  :ImplementMe!)
+  (apply hash-map (interleave tbl-keys tbl-record)))
 
 ;; (data-table student-tbl)
 ;; => ({:surname "Ivanov", :year "1996", :id "1"}
@@ -42,7 +40,14 @@
 ;;
 ;; Hint: let, map, next, table-keys, data-record
 (defn data-table [tbl]
-  :ImplementMe!)
+  (let [keys-vector (table-keys tbl)]
+    ;(print keys-vector)
+    ;(map hash-map keys-vector (next tbl))
+    (mapv next tbl)
+    )
+  )
+
+(data-table student-tbl)
 
 ;; (str-field-to-int :id {:surname "Ivanov", :year "1996", :id "1"})
 ;; => {:surname "Ivanov", :year "1996", :id 1}
